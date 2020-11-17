@@ -73,7 +73,7 @@ There are several optional arguments you can set to use additional dataset durin
 
 This is a Japanese speech dataset built from Japanese TEDx videos and their subtitles.
 To build this dataset, you have to prepare audio and subtitle files beforehand.
-The original TEDx videos are listed [HERE](kaldi/laboro_tv_speech/s5/local/tedx-jp-10k.csv).
+The original TEDx videos are listed [HERE](kaldi/laboro_tv_speech/s5/local/tedx-jp/tedx-jp-10k.csv).
 For example, you can download an audio file (`<video-id>.wav`) and the corresponding subtitle file (`<video-id>.ja.vtt`) as follows, using `youtube-dl`:
 
 ```bash
