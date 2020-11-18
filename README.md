@@ -98,7 +98,7 @@ This LM was trained using the [OSCAR](https://oscar-corpus.com/) corpus containi
 
 #### Download
 
-- [oscar_3gram_lm_v1.0.tar.gz](https://assets.laboro.ai/laborotvspeech/oscar_3gram_lm_v1.0.tar.gz)
+- [oscar_3gram_lm_v1.0.tar.gz](http://assets.laboro.ai/laborotvspeech/oscar_3gram_lm_v1.0.tar.gz)
   - 3-gram counts
   - 3-gram LM with vocabulary size = 200K (pruned 1e-8)
   - pronunciation dictionaries
