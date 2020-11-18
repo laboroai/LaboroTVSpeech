@@ -33,9 +33,9 @@ Our current release contains over 2,000 hours of speech.
 - **We do not provide a test set** in this corpus, because it was nearly imporssible not to make speakers in the test set appear in the training or development set considering that many celebrities appear in several programs.
   - In stead of the test set of LaboroTVSpeech, you may use [TEDxJP-10K](#tedxjp-10k-dataset).
 
-## Download
+## How to get the corpus
 
-N/A
+[This page](https://laboro.ai/column/eg-laboro-tv-corpus-jp/) describes how to apply for downloading the corpus in Japanese. English explanation will be added in near future. 
 
 ## Recipe for Kaldi Speech Recognition Tooklit
 
@@ -98,7 +98,11 @@ This LM was trained using the [OSCAR](https://oscar-corpus.com/) corpus containi
 
 #### Download
 
-- [oscar_3gram_lm_v1.0.tar.gz]()
+- [oscar_3gram_lm_v1.0.tar.gz](https://assets.laboro.ai/laborotvspeech/oscar_3gram_lm_v1.0.tar.gz)
   - 3-gram counts
   - 3-gram LM with vocabulary size = 200K (pruned 1e-8)
   - pronunciation dictionaries
+  
+## License
+
+The content of this repository and the OSCAR Language model (excluding LaboroTVSpeech corpus itself) is released under Apache License v2.
