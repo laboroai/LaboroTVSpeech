@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Make a kaldi-format data directory from pairs of .wav and .vtt files in a input directory
+Make a kaldi-format data directory from pairs of .wav and .vtt files in an input directory
 """
 
 import sys
