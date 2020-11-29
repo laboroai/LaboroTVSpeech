@@ -35,7 +35,7 @@ Our current release contains over 2,000 hours of speech.
 
 ## How to get the corpus
 
-[This page](https://laboro.ai/column/eg-laboro-tv-corpus-jp/) describes how to apply for downloading the corpus in Japanese. English explanation will be added in near future. 
+[This page](https://laboro.ai/column/eg-laboro-tv-corpus-jp/) describes how to apply for downloading the corpus in Japanese. English explanation will be added in near future.
 
 ## Recipe for Kaldi Speech Recognition Tooklit
 
@@ -43,7 +43,7 @@ Our current release contains over 2,000 hours of speech.
 
 We have evaluated LaboroTVSpeech by building an ASR model using the [Kaldi Speech Recognition Toolkit](https://github.com/kaldi-asr/kaldi).
 The recipe is based on Kaldi's [official CSJ recipe](https://github.com/kaldi-asr/kaldi/tree/master/egs/csj/s5).
-Copy `kaldi/laboro_tv_speech` to your `$KALDI_ROOT/egs` and execute `s5/run.sh` to train an ASR system from the beggining.
+Copy `kaldi/laborotv` to your `$KALDI_ROOT/egs` and execute `s5/run.sh` to train an ASR system from the beggining.
 
 ### Optional Arguments for `run.sh`
 
@@ -73,7 +73,7 @@ There are several optional arguments you can set to use additional dataset durin
 
 This is a Japanese speech dataset built from Japanese TEDx videos and their subtitles.
 To build this dataset, you have to prepare audio and subtitle files beforehand.
-The original TEDx videos are listed [HERE](kaldi/laboro_tv_speech/s5/local/tedx-jp/tedx-jp-10k.csv).
+The original TEDx videos are listed [HERE](kaldi/laborotv/s5/local/tedx-jp/tedx-jp-10k.csv).
 For example, you can download an audio file (`<video-id>.wav`) and the corresponding subtitle file (`<video-id>.ja.vtt`) as follows, using `youtube-dl`:
 
 ```bash
@@ -102,7 +102,7 @@ This LM was trained using the [OSCAR](https://oscar-corpus.com/) corpus containi
   - 3-gram counts
   - 3-gram LM with vocabulary size = 200K (pruned 1e-8)
   - pronunciation dictionaries
-  
+
 ## License
 
 The content of this repository and the OSCAR Language model (excluding LaboroTVSpeech corpus itself) is released under Apache License v2.
