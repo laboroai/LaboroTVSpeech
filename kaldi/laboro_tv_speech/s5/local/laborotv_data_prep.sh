@@ -22,10 +22,6 @@ for x in train dev; do
     sort |
     perl -pe 's,(.*/)([^/]*)(\.wav),\2 \1\2\3,g' \
       >data/${x}/wav.scp
-  # find -L ${CORPUS_DIR}/data/${x}/wav -name "*.wav" |
-  #   sort |
-  #   perl -pe 's,(.*/)([^/]*)(\.wav),\2 \1\2\3,g' \
-  #     >data/${x}/wav.scp
 
   # Make a dumb utt2spk and spk2utt,
   # where each utterance corresponds to a unique speaker.
