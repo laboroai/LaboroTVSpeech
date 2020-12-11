@@ -106,7 +106,7 @@ def load_vtt_as_dataframe(vtt_path):
 
             # Time
             if "-->" in line:
-                start_time, _, end_time = line.split()
+                start_time, _, end_time, *__ = line.split(" ")
                 read_line = True
 
             # End of segments
