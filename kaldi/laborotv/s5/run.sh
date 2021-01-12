@@ -32,7 +32,7 @@ test_lang_names="lang_laborotv_tg"
 oscar_lm_name="oscar_200Kvocab_prune1e-8"
 
 # options to include additional testing dataset & LMs
-include_tedx=false
+include_tedx=true
 include_oscar_lm=false
 include_lm_interp=false
 
