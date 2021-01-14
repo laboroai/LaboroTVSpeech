@@ -32,18 +32,18 @@ test_lang_names="lang_laborotv_tg"
 oscar_lm_name="oscar_200Kvocab_prune1e-8"
 
 # options to include additional testing dataset & LMs
-include_tedx=false
+include_tedx=true
 include_oscar_lm=false
 include_lm_interp=false
 
 . utils/parse_options.sh
 
 LABOROTV_DATA_ROOT="/mnt/data/LaboroTVSpeech_v1.0b"
-TEDXJP_DATA_ROOT="data/local/tedx-jp"
+TEDXJP_DATA_ROOT="/mnt/data/TEDxJP-10K_v1.1"
 
 # Handle options
 if ${include_tedx}; then
-  test_sets="tedx-jp-10k_verbatim"
+  test_sets="tedx-jp-10k"
 fi
 
 if ${include_oscar_lm}; then
@@ -63,9 +63,9 @@ if [[ ${stage} -le 0 ]]; then
 
   if ${include_tedx}; then
     # Prepare TEDx-JP-10K to use as eval set.
-    local/tedx-jp/10k_data_prep.sh ${TEDXJP_DATA_ROOT}
+    local/tedx-jp-10k_data_prep.sh ${TEDXJP_DATA_ROOT}
   fi
-
+  
   local/lm/prepare_dict.sh \
     ${LABOROTV_DATA_ROOT}/data/lexicon.txt data/local/dict_nosp
 

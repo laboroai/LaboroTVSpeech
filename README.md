@@ -39,25 +39,27 @@ Our current release contains over 2,000 hours of speech.
 
 ## Recipe for Kaldi Speech Recognition Tooklit
 
-### How to use
-
 We have evaluated LaboroTVSpeech by building an ASR model using the [Kaldi Speech Recognition Toolkit](https://github.com/kaldi-asr/kaldi).
 The recipe is based on Kaldi's [official CSJ recipe](https://github.com/kaldi-asr/kaldi/tree/master/egs/csj/s5).
-Copy `kaldi/laborotv` to your `$KALDI_ROOT/egs` and execute `s5/run.sh` to train an ASR system from the beggining.
 
-### Optional Arguments for `run.sh`
+As a test set, we used [TEDxJP-10K](https://github.com/laboroai/TEDxJP-10K) ASR evalution dataset.
 
-Without any optional arguments, the training and testing use LaboroTVSpeech only.
-There are several optional arguments you can set to use additional dataset during testing:
+### How to train an ASR model
 
-- `--include-tedx true`
+Firstly, copy `kaldi/laborotv` to your `$KALDI_ROOT/egs`. Then, extract "LaboroTVSpeech_v1.0b.tar.gz" and modify `LABOROTV_DATA_ROOT=` line in `s5/run.sh` to match your environment.
 
-  - With this option, we will also test the ASR model using TEDxJP-10K datast.
-  - This option supposes the original wav files and subtitle files already exist in `data/local/tedxjp`.
-  - Read [TEDxJP-10K dataset](#tedxjp-10k-dataset) for details.
+For the test test, construct TEDxJP-10K dataset from [TEDxJP-10K github page](https://github.com/laboroai/TEDxJP-10K) and modify `TEDXJP_DATA_ROOT=` line in `s5/run.sh` to the location where you store the dataset.
+
+Finally, execute `s5/run.sh` to start training.
+
+### Optional arguments for `run.sh`
+
+By default, `run.sh` will train both acoustic model and language model with only LabotoTVSpeech corpus and do the testing using TEDxJP-10K dataset. There are several optional arguments you can set to control how we train a langugae model and how we test the trained model.
+
+- `--include-tedx false`
+  - With this option, we will not use TEDxJP-10K and, hence, no testing will be conducted.
 
 - `--include-oscar-lm true`
-
   - With this option, we will also use a LM built from OSCAR corpus.
   <!-- - This option supposes 3-gram count file of OSCAR already exists in `data/local/oscar.gz`. -->
   - You have to copy an arpa-format LM (`oscar_200Kvocab_prune1e-8.o3g.kn.gz`) and lexicon.txt to `data/local/lm_oscar` beforehand.
@@ -67,36 +69,18 @@ There are several optional arguments you can set to use additional dataset durin
   - With this option, the script builds TV+OSCAR-LM by interpolating the default TV-LM and OSCAR-LM.
   - This option is allowed only if `--include-oscar-lm true` is set.
 
-## Optional Data
-
-### TEDxJP-10K Dataset
-
-This is a Japanese speech dataset built from Japanese TEDx videos and their subtitles.
-To build this dataset, you have to prepare audio and subtitle files beforehand.
-The original TEDx videos are listed [HERE](kaldi/laborotv/s5/local/tedx-jp/tedx-jp-10k.csv).
-For example, you can download an audio file (`<video-id>.wav`) and the corresponding subtitle file (`<video-id>.ja.vtt`) as follows, using `youtube-dl`:
-
-```bash
-youtube-dl \
-  --extract-audio \
-  --audio-format wav \
-  --write-sub \
-  --sub-format vtt \
-  --sub-lang ja \
-  --output "data/local/tedx-jp/%(id)s.%(ext)s" \
-  'https://www.youtube.com/watch?v=-6K2nN9aWsg'
+For example, if you want to train a language model with OSCAR corpus with out do testing, execute the below line instead.
+```
+./run.sh --include-tedx false --include-oscar-lm true
 ```
 
-#### Notes
+## OSCAR Language Model
 
-- The text are **NOT** tokenized by default.
-- This dataset contains manually annotated verbatim data, yet a few segments have incorrect timestamps or text.
-
-### OSCAR Language Model
+### Overview
 
 This LM was trained using the [OSCAR](https://oscar-corpus.com/) corpus containing 100 GB of web-crawled Japanese text. We estimated the pronunciations of the words in the lexicon in the same way as the LaboroTVSpeech. When building LMs, we have selected the vocabulary based on frequency counts.
 
-#### Download
+### Download
 
 - [oscar_3gram_lm_v1.0.tar.gz](http://assets.laboro.ai.s3.amazonaws.com/laborotvspeech/oscar_3gram_lm_v1.0.tar.gz)
   - 3-gram counts
