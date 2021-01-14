@@ -39,7 +39,7 @@ include_lm_interp=false
 . utils/parse_options.sh
 
 LABOROTV_DATA_ROOT="/mnt/data/LaboroTVSpeech_v1.0b"
-TEDXJP_DATA_ROOT="/mnt/data/TEDxJP-10K"
+TEDXJP_DATA_ROOT="/mnt/data/TEDxJP-10K_v1.1"
 
 # Handle options
 if ${include_tedx}; then
