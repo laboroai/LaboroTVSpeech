@@ -95,6 +95,9 @@ else
   csj_data="data/csj"
 fi
 
+# Add symbolic links to CSJ's scripts in local/
+local/csj_symlink_scripts.sh 
+
 # Prepare kaldi-format data directories
 # for each of LaboroTVSpeech and CSJ
 if [[ ${stage} -le -1 ]]; then
