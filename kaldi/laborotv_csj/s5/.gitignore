@@ -1,0 +1,8 @@
+data/
+exp/
+
+csj_make_trans
+csj_data_prep.sh
+csj_prepare_dict.sh
+csj_train_lms.sh
+csj_eval_data_prep.sh
